@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080b10">
+  <meta name="description" content="TradeFoundry — Learn / Analyze / Trade / Grow. Market intelligence terminal.">
+  <title>TradeFoundry Terminal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <img src="assets/tradefoundry-logo.jpg" alt="TradeFoundry logo">
+      <div><b>TRADEFOUNDRY</b><small>MARKET INTELLIGENCE</small></div>
+      <button class="mobile-close" id="closeNav" aria-label="Close menu">×</button>
+    </div>
+    <div class="side-label">WORKSPACE</div>
+    <nav class="nav">
+      <button class="nav-link active" data-target="overview"><span>◫</span> Market overview</button>
+      <button class="nav-link" data-target="charts"><span>⌁</span> Live charts</button>
+      <button class="nav-link" data-target="intermarket"><span>◈</span> Intermarket</button>
+      <button class="nav-link" data-target="economics"><span>▦</span> Economic calendar</button>
+      <button class="nav-link" data-target="news"><span>▤</span> News terminal</button>
+    </nav>
+    <div class="side-label">MARKETS</div>
+    <div class="watchlist-mini">
+      <div><span class="dot gold"></span> XAUUSD <em>Gold</em></div>
+      <div><span class="dot green"></span> DXY <em>Dollar index</em></div>
+      <div><span class="dot blue"></span> US10Y <em>10Y yield</em></div>
+      <div><span class="dot purple"></span> EURUSD <em>Euro / USD</em></div>
+      <div><span class="dot orange"></span> USOIL <em>Crude oil</em></div>
+    </div>
+    <div class="sidebar-bottom">
+      <div class="live-indicator"><i></i> MARKET DATA VIA TRADINGVIEW</div>
+      <small>LEARN / ANALYZE / TRADE / GROW</small>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div class="top-left"><button class="menu-btn" id="openNav">☰</button><span class="crumb">TERMINAL <b>/</b> <strong id="sectionName">MARKET OVERVIEW</strong></span></div>
+      <div class="top-right"><span class="market-status"><i></i> GLOBAL MARKETS</span><span class="clock" id="clock">--:--:-- WIB</span></div>
+    </header>
+
+    <div class="ticker-wrap"><div class="tradingview-widget-container"><div class="tradingview-widget-container__widget"></div></div></div>
+
+    <section class="page-section" id="overview">
+      <div class="page-heading"><div><div class="eyebrow">WEDNESDAY, 11 NOVEMBER 2026 <span class="live-tag">● LIVE TERMINAL</span></div><h1>Market overview<span>.</span></h1><p>Your global macro and market intelligence dashboard.</p></div><div class="heading-right"><span class="mono muted">SESSION MONITOR</span><strong id="sessionText">ASIA / PACIFIC</strong></div></div>
+      <div class="metric-grid">
+        <article class="metric-card accent-gold"><div class="metric-top"><span>GOLD / US DOLLAR</span><b>01</b></div><h2>XAUUSD</h2><div class="metric-foot"><span>Spot gold · OANDA</span><span class="pill neutral">LIVE CHART ↓</span></div></article>
+        <article class="metric-card"><div class="metric-top"><span>US DOLLAR INDEX</span><b>02</b></div><h2>DXY</h2><div class="metric-foot"><span>Dollar strength</span><span class="pill neutral">LIVE CHART ↓</span></div></article>
+        <article class="metric-card"><div class="metric-top"><span>US 10 YEAR YIELD</span><b>03</b></div><h2>US10Y</h2><div class="metric-foot"><span>Treasury benchmark</span><span class="pill neutral">LIVE CHART ↓</span></div></article>
+        <article class="metric-card"><div class="metric-top"><span>VOLATILITY INDEX</span><b>04</b></div><h2>VIX</h2><div class="metric-foot"><span>Risk sentiment</span><span class="pill neutral">LIVE CHART ↓</span></div></article>
+      </div>
+      <div class="section-row"><div><div class="eyebrow">01 / PRICE ACTION</div><h2>Market snapshot</h2></div><button class="text-button" data-jump="charts">OPEN CHARTS ↗</button></div>
+      <div class="panel chart-panel"><div class="panel-head"><div><b>GOLD · XAUUSD</b><span class="sub">Spot gold / US dollar · Interactive chart</span></div><div class="chart-tools"><span class="live-tag">REAL-TIME WIDGET</span></div></div><div class="tv-chart" id="overviewChart"></div></div>
+      <div class="two-col">
+        <div class="panel"><div class="panel-head"><div><b>GLOBAL MARKET HEATMAP</b><span class="sub">Cross-asset market performance</span></div><span class="panel-index">01A</span></div><div class="tv-heatmap" id="heatmap"></div></div>
+        <div class="panel"><div class="panel-head"><div><b>MARKET NEWS FLOW</b><span class="sub">Latest headlines from TradingView</span></div><span class="panel-index">01B</span></div><div class="tv-timeline compact" id="overviewNews"></div></div>
+      </div>
+    </section>
+
+    <section class="page-section" id="charts">
+      <div class="page-heading"><div><div class="eyebrow">02 / TECHNICAL ANALYSIS</div><h1>Live charts<span>.</span></h1><p>Interactive TradingView charts. Change instrument and timeframe directly on the chart.</p></div></div>
+      <div class="panel"><div class="panel-head"><div><b>ADVANCED CHART</b><span class="sub">Choose symbol from the chart toolbar</span></div><span class="live-tag">LIVE</span></div><div class="tv-chart tall" id="fullChart"></div></div>
+      <div class="two-col">
+        <div class="panel"><div class="panel-head"><div><b>FOREX CROSS RATES</b><span class="sub">Major currency pairs</span></div></div><div id="forex"></div></div>
+        <div class="panel"><div class="panel-head"><div><b>CRYPTO MARKET</b><span class="sub">Digital asset overview</span></div></div><div id="crypto"></div></div>
+      </div>
+    </section>
+
+    <section class="page-section" id="intermarket">
+      <div class="page-heading"><div><div class="eyebrow">03 / MACRO RELATIONSHIPS</div><h1>Intermarket monitor<span>.</span></h1><p>Track the assets that can influence gold, USD and broader risk sentiment.</p></div></div>
+      <div class="callout"><b>HOW TO READ THIS PANEL</b><span>Intermarket relationships are context, not fixed rules. Correlations and market drivers can change; confirm with price action and the current macro regime.</span></div>
+      <div class="panel"><div class="panel-head"><div><b>INTERMARKET PERFORMANCE</b><span class="sub">Live market overview · selected symbols</span></div><span class="live-tag">LIVE DATA</span></div><div id="intermarketTable"></div></div>
+      <div class="two-col">
+        <div class="panel"><div class="panel-head"><div><b>COMPARATIVE PRICE CHART</b><span class="sub">Gold, dollar and Treasury yield context</span></div></div><div class="tv-chart medium" id="compareChart"></div></div>
+        <div class="panel"><div class="panel-head"><div><b>MARKET CORRELATION GUIDE</b><span class="sub">Common macro relationships to monitor</span></div></div>
+          <div class="correlation-list">
+            <div><b>GOLD ↔ USD</b><span class="relation">Often inverse</span><p>A stronger USD can pressure dollar-priced gold, but real yields and safe-haven demand also matter.</p></div>
+            <div><b>GOLD ↔ REAL YIELDS</b><span class="relation">Often inverse</span><p>Rising real yields can increase the opportunity cost of holding non-yielding gold.</p></div>
+            <div><b>GOLD ↔ RISK AVERSION</b><span class="relation">Regime-dependent</span><p>Geopolitical or financial stress may support safe-haven demand; liquidity shocks can complicate the move.</p></div>
+            <div><b>OIL ↔ INFLATION</b><span class="relation">Indirect link</span><p>Energy prices can influence inflation expectations and central-bank pricing.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section" id="economics">
+      <div class="page-heading"><div><div class="eyebrow">04 / FUNDAMENTAL CATALYSTS</div><h1>Economic calendar<span>.</span></h1><p>Monitor scheduled macro releases and potential volatility windows.</p></div></div>
+      <div class="callout warning"><b>EVENT RISK</b><span>High-impact releases can cause spread widening, slippage and rapid repricing. Confirm event times against the official source and your broker.</span></div>
+      <div class="panel"><div class="panel-head"><div><b>GLOBAL ECONOMIC CALENDAR</b><span class="sub">Filter country, impact and date range inside the calendar</span></div><span class="live-tag">EMBEDDED CALENDAR</span></div><div id="economicCalendar" class="tv-calendar"></div></div>
+    </section>
+
+    <section class="page-section" id="news">
+      <div class="page-heading"><div><div class="eyebrow">05 / INFORMATION FLOW</div><h1>News terminal<span>.</span></h1><p>Follow market-moving headlines and open the original source for full context.</p></div></div>
+      <div class="news-tabs"><button class="news-tab active" data-news="general">ALL MARKETS</button><button class="news-tab" data-news="forex">FOREX</button><button class="news-tab" data-news="stock">EQUITIES</button><button class="news-tab" data-news="crypto">CRYPTO</button></div>
+      <div class="panel"><div class="panel-head"><div><b>LIVE NEWS TIMELINE</b><span class="sub">Headlines supplied by TradingView · source links open externally</span></div><span class="live-tag">NEWS FEED</span></div><div class="tv-timeline news-feed" id="newsTimeline"></div></div>
+      <p class="fineprint">News embeds and market widgets are provided by third parties. TradeFoundry does not independently verify headlines or provide investment advice.</p>
+    </section>
+
+    <footer><div><b>TRADEFOUNDRY</b><span>LEARN / ANALYZE / TRADE / GROW</span></div><small>MARKET INTELLIGENCE TERMINAL · NOT FINANCIAL ADVICE</small></footer>
+  </main>
+</div>
+<script src="app.js"></script>
+<script src="https://s3.tradingview.com/tv.js" async></script>
+</body>
+</html>
